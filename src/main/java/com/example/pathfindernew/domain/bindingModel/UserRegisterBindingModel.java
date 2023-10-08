@@ -6,17 +6,17 @@ import jakarta.validation.constraints.Size;
 
 public class UserRegisterBindingModel {
 
-    @Size(min = 5, message = "Username length must be more than 5 characters!!!!!!!!!!!!!!!!")
+    @Size(min = 4, message = "Username length must be more than 4 characters!!!!!!!!!!!!!!!!")
     private String username;
-    @Size(min = 5, message = "Full name length must be more than 5 characters")
+    @Size(min = 4, message = "Full name length must be more than 4 characters")
     private String fullName;
     @Email(message = "Must be valid email")
     private String email;
     @Positive(message = "Must be valid age")
     private Integer age;
-    @Size(min = 6, max = 20, message = "Password length must be between 6 and 20 characters")
+    @Size(min = 5, max = 20, message = "Password length must be between 5 and 20 characters")
     private String password;
-    @Size(min = 6, max = 20, message = "Password length must be between 6 and 20 characters")
+    @Size(min = 5, max = 20, message = "Password length must be between 5 and 20 characters")
     private String confirmPassword;
 
     public UserRegisterBindingModel() {

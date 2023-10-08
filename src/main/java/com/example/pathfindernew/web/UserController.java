@@ -3,6 +3,7 @@ package com.example.pathfindernew.web;
 import com.example.pathfindernew.domain.bindingModel.UserLoginBindingModel;
 import com.example.pathfindernew.domain.bindingModel.UserRegisterBindingModel;
 import com.example.pathfindernew.domain.serviceModel.UserServiceModel;
+import com.example.pathfindernew.domain.viewModel.UserProfileViewModem;
 import com.example.pathfindernew.service.UserService;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -49,6 +51,18 @@ public class UserController {
                     .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBindingModel", bindingResult);
             return "redirect:register";
         }
+
+
+        boolean isNameExist = userService.isNameExistMetod(userRegisterBindingModel.getUsername());
+
+        if(isNameExist){
+            redirectAttributes.addFlashAttribute("isNameExist", true)
+                    .addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel)
+                    .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBidingModel",
+                            bindingResult);
+            return "redirect:register";
+        }
+
 
         userService.registerUser(modelMapper.map(userRegisterBindingModel, UserServiceModel.class));
         return "redirect:login";
@@ -104,4 +118,14 @@ public class UserController {
         userService.logOutUser();
         return "redirect:/";
     }
+
+    //----------------------------------------------------------------
+
+    @GetMapping("/profile/{id}")
+    public String profile(@PathVariable Long id, Model model){
+
+        model.addAttribute("user", modelMapper.map(userService.findById(id), UserProfileViewModem.class));
+        return "profile";
+    }
+
 }

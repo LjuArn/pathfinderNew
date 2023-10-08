@@ -22,8 +22,14 @@ public class RouteEntity extends BaseEntity{
     private String videoUrl;
     @ManyToOne
     private UserEntity author;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<CategoryEntity> categories;
+
+    @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
+    private Set<PictureEntity> pictures;
+
+    @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
+    private Set<CommentEntity> comments;
 
     public RouteEntity() {
     }
@@ -88,6 +94,25 @@ public class RouteEntity extends BaseEntity{
 
     public RouteEntity setCategories(Set<CategoryEntity> categories) {
         this.categories = categories;
+        return this;
+    }
+
+    public Set<PictureEntity> getPictures() {
+        return pictures;
+    }
+
+    public RouteEntity setPictures(Set<PictureEntity> pictures) {
+        this.pictures = pictures;
+        return this;
+    }
+
+
+    public Set<CommentEntity> getComments() {
+        return comments;
+    }
+
+    public RouteEntity setComments(Set<CommentEntity> comments) {
+        this.comments = comments;
         return this;
     }
 }

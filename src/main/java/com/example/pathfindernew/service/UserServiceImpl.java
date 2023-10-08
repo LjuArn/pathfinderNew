@@ -50,5 +50,18 @@ public class UserServiceImpl implements UserService {
         currentUser.setId(null).setUsername(null);
     }
 
+    @Override
+    public UserServiceModel findById(Long id) {
+        return userRepository.findById(id)
+                .map(userEntity -> modelMapper.map(userEntity, UserServiceModel.class))
+                .orElse(null);
+    }
+
+    @Override
+    public boolean isNameExistMetod(String username) {
+        return userRepository.findByUsername(username)
+                .isPresent();
+    }
+
 
 }

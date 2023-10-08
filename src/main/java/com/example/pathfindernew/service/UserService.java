@@ -11,4 +11,8 @@ public interface UserService {
     void loginUser(Long id, String username);
 
     void logOutUser();
+
+    UserServiceModel findById(Long id);
+
+    boolean isNameExistMetod(String username);
 }
