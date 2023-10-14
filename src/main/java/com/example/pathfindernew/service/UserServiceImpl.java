@@ -63,5 +63,10 @@ public class UserServiceImpl implements UserService {
                 .isPresent();
     }
 
+    @Override
+    public UserEntity findCurrentLoginUser() {
+        return userRepository.findById(currentUser.getId()).orElse(null);
+    }
+
 
 }

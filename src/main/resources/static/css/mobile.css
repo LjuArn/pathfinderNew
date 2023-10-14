@@ -3,7 +3,7 @@
   .top-container {
     grid-template-areas:
       'showcase showcase'
-      'top-box-a top-box-b';
+      'top-box-a top-box-b top-box-c';
   }
 
   .showcase h1 {
@@ -30,6 +30,7 @@
     grid-template-areas:
       'showcase'
       'top-box-a'
-      'top-box-b';
+      'top-box-b'
+      'top-box-c';
   }
 }

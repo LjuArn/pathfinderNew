@@ -4,6 +4,7 @@ import com.example.pathfindernew.domain.entity.CategoryEntity;
 import com.example.pathfindernew.domain.entity.CommentEntity;
 import com.example.pathfindernew.domain.entity.PictureEntity;
 import com.example.pathfindernew.domain.entity.UserEntity;
+import com.example.pathfindernew.domain.entity.enums.CategoryNameEnum;
 import com.example.pathfindernew.domain.entity.enums.UserLevelEnum;
 
 import java.util.Set;
@@ -17,7 +18,7 @@ public class RouteServiceModel {
     private String name;
     private String videoUrl;
     private UserEntity author;
-    private Set<CategoryEntity> categories;
+    private Set<CategoryNameEnum> categories;
     private Set<PictureEntity> pictures;
     private Set<CommentEntity> comments;
 
@@ -87,11 +88,11 @@ public class RouteServiceModel {
         return this;
     }
 
-    public Set<CategoryEntity> getCategories() {
+    public Set<CategoryNameEnum> getCategories() {
         return categories;
     }
 
-    public RouteServiceModel setCategories(Set<CategoryEntity> categories) {
+    public RouteServiceModel setCategories(Set<CategoryNameEnum> categories) {
         this.categories = categories;
         return this;
     }
