@@ -38,7 +38,7 @@ public class RouteController {
 
 
     @GetMapping("/all")
-    public String routes(Model model) {
+    public String allRoutes(Model model) {
 
         model.addAttribute("routes", routeService.findAllRoutesViewModels());
         return "routes";

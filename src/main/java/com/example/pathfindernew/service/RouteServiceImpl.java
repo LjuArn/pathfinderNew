@@ -45,7 +45,7 @@ public class RouteServiceImpl implements RouteService {
                     if (routeEntity.getPictures().isEmpty()) {
                         routeViewModel.setPicture("/images/pic4.jpg");
                     } else {
-                        routeViewModel.setPicture(routeEntity.getPictures().stream().findFirst().get().getUrl());
+                        routeViewModel.setPicture(routeEntity.getPictures().stream().findAny().get().getUrl());
                     }
                     return routeViewModel;
                 })

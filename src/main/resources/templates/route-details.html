@@ -19,17 +19,20 @@
             <h4>Difficulty Level (1-3):</h4>
             <div class="level">
                 <p><img class="level-img" src="/images/difficulty-level.png" alt=""></p>
-                <p th:if="*{level.name() == 'INTERMEDIATE'}"><img class="level-img" src="/images/difficulty-level.png"
-                                                                  alt=""></p>
+                <p th:if="*{level.name() == 'INTERMEDIATE'}">
+                    <img class="level-img" src="/images/difficulty-level.png" alt=""></p>
 
                 <th:block th:if="*{level.name() == 'ADVANCED'}">
                     <p><img class="level-img" src="/images/difficulty-level.png" alt=""></p>
                     <p><img class="level-img" src="/images/difficulty-level.png" alt=""></p>
                 </th:block>
             </div>
+
             <div>
                 <h4>Choose picture</h4>
-                <form action="/" method="POST" enctype="multipart/form-data">
+                <form action="/"
+                      method="POST"
+                      enctype="multipart/form-data">
                     <input type="hidden" id="id" name="routeId">
                     <div class="form-group">
                         <label>
@@ -70,7 +73,8 @@
 
             <div>
                 <!-- Comments submission -->
-                <form id="commentForm" method="POST"
+                <form id="commentForm"
+                      method="POST"
                       action="/">
                     <div class="form-group">
                         <h4>Leave a comment</h4>

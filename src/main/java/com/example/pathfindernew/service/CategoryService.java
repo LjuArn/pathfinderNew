@@ -7,6 +7,5 @@ import java.util.Optional;
 
 public interface CategoryService {
 
-
     CategoryEntity findCathegoryByName(CategoryNameEnum categoryNameEnum);
 }
